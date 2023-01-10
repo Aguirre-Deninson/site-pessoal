@@ -2,8 +2,10 @@
 abstract: La Fundación para una Democracia Participativa **(FUDEPA)** junto con Ciencia Política Press, organizan la mesa Pre-Congreso del "Primer Congreso Latino Americano sobre Mercados Laborales de la Ciencia Política y Las Relaciones Internacionales". 
          
   
-  Fui invitado a participar como panelista en la mesa "La migración como un fenómeno complejo y multidimensional. Aporte y debates desde las relaciones internacionales". 
+  Fui invitado a participar como panelista en la mesa "La migración como un fenómeno complejo y multidimensional. Aporte y debates desde las relaciones internacionales".
   
+  
+  El título de mi presentación es "La crisis aún existe - El éxodo migratorio venezolano hacia Brasil".
   
   [Formulario de inscripción](https://bit.ly/3k2oJUo)
 address:
@@ -24,11 +26,11 @@ image:
   focal_point: Right
 links:
 location: ZOOM
-projects:
+projects: [venezuela]
 publishDate: "2017-01-01T00:00:00Z"
 slides: 
 summary: La migración como un fenómeno complejo y multidimensional. Aportes y debates desde las Relaciones Internacionales. 
-tags: [Relações Internacionais, Ciência Política, Migração]
+tags: [Relações Internacionais, Ciência Política, Migração, Venezuela]
 title: Mesa Pre-congreso
 url_code: ""
 url_pdf: ""

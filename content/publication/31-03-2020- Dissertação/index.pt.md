@@ -11,7 +11,7 @@ image:
   caption: 'Image credit: [**Aguirre, Deninson**]()'
   focal_point: ""
   preview_only: false
-projects:
+projects: [democracia, venezuela]
 publication: In [*Biblioteca Digital de Teses e Dissertações*](http://tede2.pucgoias.edu.br:8080/handle/tede/4483)
 publication_short: In *PUC GO*
 publication_types:

@@ -21,6 +21,7 @@ image:
   caption: 'Image credit: [**CAOESTE**]'
   focal_point: ''
   preview_only: no
+projects: [democracia]
 publication: '*CAOESTE*'
 publication_types:
   - '2'
