@@ -23,17 +23,16 @@ date_format: Jan 2006
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
   - title: Diretor de Projeto e Pesquisa
-    company: Center for International Research (CPINTER)
-    company_url: ''
+    company: Centro de Pesquisa Internacional (CPINTER)
+    company_url: 'http://www.cpinter.com.br/'
     company_logo: logo-cpinter 
     location: Brasil
     date_start: '2021-01-01'
     date_end: ''
         
-
   - title: Coordenador de Projetos
     company: Centro de Investigación de Asuntos Estratégicos Globales de Venezuela (CEINASEG)
-    company_url: ''
+    company_url: 'https://ceinaseg.com/'
     company_logo: logo-ceinaseg
     location: Venezuela
     date_start: '2020-10-01'
@@ -41,7 +40,7 @@ experience:
     
   - title: Secretário de Extensão
     company: Federação Nacional de Estudantes de Relações Internacionais do Brasil (FENERI)
-    company_url: ''
+    company_url: 'https://feneri.wixsite.com/feneri'
     company_logo: logo-feneri
     location: Brasil
     date_start: '2019-06-01'
@@ -49,7 +48,7 @@ experience:
     
   - title: Editor Assistente
     company: Revista FENERI
-    company_url: ''
+    company_url: 'https://revistafeneri.wordpress.com/'
     company_logo: logo-revistafeneri
     location: Brasil
     date_start: '2019-06-01'
