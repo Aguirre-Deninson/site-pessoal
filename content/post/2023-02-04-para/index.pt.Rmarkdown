@@ -1,0 +1,207 @@
+---
+title: Produção de Açaí - Gerando Mapas com RStudio 
+author: 'admin'
+date: '2023-02-07'
+slug: Para
+categories: []
+tags:
+  - rstudio
+subtitle: ''
+summary: 'O **Açaí**, sem sombras de dúvidas, é um dos frutos que faz sucesso não apenas no Brasil, mas também, em boa parte do mundo. Rico em antioxidantes, ferro...'
+authors: [admin]
+lastmod: '2023-01-31T20:01:21-03:00'
+featured: no
+image:
+  caption: 'Image credit: [**Deninson Aguirre**]'
+  focal_point: ''
+  preview_only: no
+projects: [rstudio]
+---
+
+# **Introdução**
+
+O **Açaí**, sem sombras de dúvidas, é um dos frutos que faz sucesso não apenas no Brasil, mas também, em boa parte do mundo. Rico em antioxidantes, ferro, e com uma coloração roxa escura, o açaí é cultivado e encontrado, especialmente, nas regiões amazônicas do nosso Brasil.
+
+No entanto, buscando investigar qual estado e município é o maior produtor de açaí, iremos nos aproveitar dos recursos de pesquisas necessários para a extração de tais dados e, por fim, a produção dos respectivos mapas.
+
+## **Primeiros passos**
+
+O primeiro passo consiste em selecionar os pacotes com o qual iremos trabalhar. Neste caso serão necessários os seguintes pacotes:
+
+```{r libraries, message=FALSE, warning=FALSE}
+library(readxl)
+library(geobr)
+library(scales)
+options(scipen = 999)
+library(ggspatial)
+library(tidyverse)
+library(sf)
+library(leaflet)
+```
+
+Logo, em seguida, extrairemos os dados dos limites territoriais brasileiros conforme apresentado no *chunk* a seguir:
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+Brasil.Estados <- read_state(code_state = "all",year=2019)
+```
+
+``` r
+# estados brasileiros
+Brasil.Estados <- read_state(code_state = "all",year=2019)
+```
+
+Após isso, iremos coletar os dados de produção de açaí (em toneladas) no site do Instituto Brasileiro de Geografia e Estatistica - **IBGE**.
+
+```{r dados IBGE, message=FALSE, warning=FALSE}
+#dados do IBGE
+dados_br_acai <- read_xlsx("data/açaí país.xlsx")
+```
+
+Logo depois, iremos juntar as informações que possuímos dos dados territoriais brasileiros com os dados que coletamos do IBGE.
+
+Para isso, faz-se necessário o seguinte comando:
+
+```{r Brasil, message=FALSE, warning=FALSE}
+# junção dos dados
+Brasil <- Brasil.Estados %>% 
+  full_join(dados_br_acai) %>% 
+  select(-c("abbrev_state","name_region"))
+```
+
+Porém, como observado no código acima, decidi filtrar alguns dados, dessa forma optei por retirar `"abbrev_state"` e `"name_region"`, pois já possuo estas informações no `dados_br_acai`.
+
+Por fim, o próximo passo será a plotagem do mapa.
+
+##### Mapa 1 - Ranking de estados produtores de Açaí
+
+```{r mapa1, message=FALSE, warning=FALSE}
+
+# plotando o mapa 
+br_geral <- Brasil %>% 
+  ggplot() +
+  geom_sf(aes(fill = `Toneladas`),size=.15) +
+  geom_sf_label(aes(label = UF),
+                label.padding = unit(0.5, "mm"),
+                size = 2) +
+  scale_fill_gradient2(mid = "whitesmoke",high = "maroon4", labels = scales::label_number(scale_cut = cut_short_scale()))+
+  xlab("Longitude") + 
+  ylab("Latitude") +
+  annotation_scale(location = "bl") +
+  annotation_north_arrow(location = "br") +
+  labs(fill = "Toneladas (Ton)",
+       title = "Ranking de estados produtores de Açaí",
+       subtitle = "Ano: 2021",
+       caption = "Fonte: Elaboração própria a partir dos dados fornecidos pelo IBGE, 2023") 
+br_geral 
+```
+
+Como observado no mapa acima, o estado do Pará se posiciona como o maior produtor de açaí do país, produzindo no ano de 2021 pouco mais de 1.38 milhões de toneladas, o que representou 93,47% da produção de todo o país.
+
+O Amazonas ficou em segundo lugar com a produção de 83 mil toneladas (5,61%), seguido da Bahia com 4 mil toneladas (0,31%).
+
+Ao todo, o Brasil produziu pouco mais de 1.48 milhões de toneladas.
+
+## **Próximo passo**
+
+Para obtermos os dados dos municípios produtores de açaí iremos seguir por um caminho similar ao que foi apresentado anteriormente.
+
+No *chunk* abaixo você perceberá que para conseguirmos filtrar os dados territoriais do Pará e seus municípios acrescentei o código "15" em `"filter(code_state == 15)"`. Esse é o código do estado conforme o IBGE. Não confunda com o código DDD...
+
+```{r Mun_Pará, message=FALSE, warning=FALSE, include=FALSE}
+# Municípios do Pará, código 15
+Para.Municipios <- read_municipality(code_muni = "all",year=2019) %>% 
+  filter(code_state == 15) %>% 
+  select(-c("code_state","abbrev_state","code_region","name_region","name_state"))
+```
+
+``` r
+# Municípios do Pará, código 15
+Para.Municipios <- read_municipality(code_muni = "all",year=2019) %>% 
+  filter(code_state == 15) %>% 
+  select(-c("code_state","abbrev_state","code_region","name_region","name_state"))
+```
+
+```{r dados PA IBGE, message=FALSE, warning=FALSE}
+# Dados de produção de açaí (ton) nos municípios do Pará coletados no IBGE
+dados_pa_acai<- read_xlsx("data/Açaí Municípios Pará.xlsx")
+```
+
+```{r message=FALSE, warning=FALSE}
+# Junção dos dados
+Para <- Para.Municipios %>%
+  full_join(dados_pa_acai,by = "code_muni")
+```
+
+No mapa abaixo podemos observar o ranking de municípios produtores de açaí.
+
+O modelo de vizualização do mapa é o mesmo do **Mapa 1**, estático. No entanto,o objetivo agora será produzir o mapa de forma interativa por meio do pacote `leaflet`, como veremos logo a seguir no **Mapa 3**.
+
+##### Mapa 2- Ranking de Municípios do Pará produtores de Açaí
+
+```{r Mapa2, message=FALSE, warning=FALSE}
+# plotagem
+ggplot(data = Para) +
+  geom_sf(aes(fill = Toneladas)) +
+  labs(title = "Ranking de Municípios do Pará produtores de Açaí",
+       subtitle = "Ano: 2021",
+       caption = "Fonte: Elaboração própria a partir dos dados fornecidos pelo IBGE, 2023") +
+  scale_fill_gradient(name = "Toneladas (ton)", 
+                      low = "whitesmoke", 
+                      high = "orchid4",
+                      labels = label_number(scale_cut = cut_short_scale())) +
+  theme_light() +
+  theme(legend.title = element_text(size = 16,
+                                    colour = "black",
+                                    face = "bold"),
+        legend.text = element_text(size = 10,
+                                   colour = "black"))
+```
+
+O mapa abaixo proporciona uma melhor visualização dos dados, permitindo assim que se possa selecionar o município do qual se tem interesse e ver as informações nele contida.
+
+###### Mapa  3 - Ranking de Municípios do Pará produtores de Açaí (Interativo)
+
+```{r mapa leaflet, message=FALSE, warning=FALSE}
+mapa <- leaflet(data = Para) %>%
+  addTiles('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+           attribution = paste(
+             '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+             '&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+           )
+  )
+####
+greens = colorNumeric("Greens", domain = Para$Toneladas)
+mapa %>% 
+  addPolygons(weight = 0.3,
+              color = "gray",
+              fillColor = ~greens(Toneladas),
+              fillOpacity = 0.9,
+              opacity = 0.8,
+              highlightOptions = highlightOptions(color = "black",
+                                                  weight = 2,
+                                                  bringToFront = TRUE),
+              smoothFactor = 0.5,
+              popup = paste0(sep = " ", "<strong>Município: </strong>", 
+                             Para$Municípios, 
+                             "<br><strong>Toneladas: </strong>", 
+                             Para$Toneladas),
+              label = ~ Municípios) %>%
+  addLegend(position = "bottomright", 
+            pal = greens,
+            values = ~Toneladas,
+            title = "Toneladas") 
+```
+
+Conforme os dados apresentados, o município de Igarapé-Miri foi o maior produtor de açaí em 2021, com 425 mil toneladas, o que representou 30,69% do que foi produzido em todo o estado do Pará.
+
+O município de Cametá ocupou o segundo lugar no ranking com 11,29%, seguido de Abaetetuba, com 8,07%.
+
+## **Considerações finais**
+
+Neste post pudemos criar de forma prática e simples mapas estáticos e interativos.
+
+Tais códigos podem ser replicados, com algumas alterações, claro, para a produção de mapas de outros estados.
+
+Porém, futuramente, abordarei sobre a apresentação e classificação desses dados durante a produção de mapas, e também, sobre a utilização de alguns pacotes.
+
+Caso tenha alguma dúvida, sugestão, ou comentário, basta me enviar uma mensagem.
