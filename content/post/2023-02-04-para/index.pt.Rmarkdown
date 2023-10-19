@@ -7,7 +7,7 @@ categories: []
 tags:
   - rstudio
 subtitle: ''
-summary: 'O **Açaí**, sem sombras de dúvidas, é um dos frutos que faz sucesso não apenas no Brasil, mas também, em boa parte do mundo. Rico em antioxidantes, ferro...'
+summary: 'O **Açaí**, sem sombra de dúvidas, é um dos frutos que faz sucesso não apenas no Brasil, mas também, em boa parte do mundo. Rico em antioxidantes, ferro...'
 authors: [admin]
 lastmod: '2023-01-31T20:01:21-03:00'
 featured: no
@@ -20,7 +20,7 @@ projects: [rstudio]
 
 # **Introdução**
 
-O **Açaí**, sem sombras de dúvidas, é um dos frutos que faz sucesso não apenas no Brasil, mas também, em boa parte do mundo. Rico em antioxidantes, ferro, e com uma coloração roxa escura, o açaí é cultivado e encontrado, especialmente, nas regiões amazônicas do nosso Brasil.
+O **Açaí**, sem sombra de dúvidas, é um dos frutos que faz sucesso não apenas no Brasil, mas também, em boa parte do mundo. Rico em antioxidantes, ferro, e com uma coloração roxa escura, o açaí é cultivado e encontrado, especialmente, nas regiões amazônicas do nosso Brasil.
 
 No entanto, buscando investigar qual estado e município é o maior produtor de açaí, iremos nos aproveitar dos recursos de pesquisas necessários para a extração de tais dados e, por fim, a produção dos respectivos mapas.
 
