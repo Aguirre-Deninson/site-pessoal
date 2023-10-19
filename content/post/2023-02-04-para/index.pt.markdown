@@ -36,7 +36,8 @@ No entanto, buscando investigar qual estado e município é o maior produtor de 
 
 ## **Primeiros passos**
 
-O primeiro passo consiste em selecionar os pacotes com o qual iremos trabalhar. Neste caso serão necessários os seguintes pacotes:
+O primeiro passo consiste em selecionar os pacotes com o qual iremos trabalhar.
+Neste caso serão necessários os seguintes pacotes:
 
 ``` r
 library(readxl)
@@ -56,7 +57,7 @@ Logo, em seguida, extrairemos os dados dos limites territoriais brasileiros conf
 Brasil.Estados <- read_state(code_state = "all",year=2019)
 ```
 
-Após isso, iremos coletar os dados de produção de açaí (em toneladas) no site do Instituto Brasileiro de Geografia e Estatistica - **IBGE**.
+Após isso iremos coletar os dados de produção de açaí (em toneladas) no site do Instituto Brasileiro de Geografia e Estatistica - **IBGE**.
 
 ``` r
 #dados do IBGE
