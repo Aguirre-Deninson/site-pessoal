@@ -22,6 +22,14 @@ date_format: Jan 2006
 #   Leave `date_end` empty if it's your current employer.
 #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
 experience:
+  - title: Diretor
+    company: Associação  Comercial, Industrial e de Serviços do Estado de Goiás Jovem (ACIEG JOVEM)
+    company_url: 'https://acieg.com.br/acieg-jovem/'
+    company_logo: logo-acieg-jovem-cd
+    location: Brasil
+    date_start: '2023-06-29'
+    date_end: ''
+  
   - title: Diretor de Projeto e Pesquisa
     company: Centro de Pesquisa Internacional (CPINTER)
     company_url: 'http://www.cpinter.com.br/'

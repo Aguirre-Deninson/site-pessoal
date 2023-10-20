@@ -46,6 +46,6 @@ superuser: true
 title: Deninson Aguirre
 ---
 
-Mestre em História com graduação em Relações Internacionais pela Pontifícia Universidade Católica de Goiás (PUC Goiás). Atualmente é Diretor de Pesquisa e Projetos no Centro de Pesquisa Internacional (CPINTER), Conselheiro suplente no Conselho Estadual da Juventude de Goiás (CONJUVE-GO), professor voluntário na Junior Achievement, Secretário de extensão na Federação Nacional de Estudantes de Relações Internacionais do Brasil (FENERI), foi Editor Adjunto da Revista FENERI, e Coordenador Geral de Comunicação e de Projetos no Centro de Investigación de Asuntos Estratégicos Globales (CEINASEG). 
+Mestre em História com graduação em Relações Internacionais pela Pontifícia Universidade Católica de Goiás (PUC Goiás). Atualmente é Diretor de Pesquisa e Projetos no Centro de Pesquisa Internacional (CPINTER), Diretor na Associação Comercial, Industrial e de Serviços do Estado de Goiás Jovem (ACIEG JOVEM),  Conselheiro suplente no Conselho Estadual da Juventude de Goiás (CONJUVE-GO), professor voluntário na Junior Achievement, Secretário de extensão na Federação Nacional de Estudantes de Relações Internacionais do Brasil (FENERI), foi Editor Adjunto da Revista FENERI, e Coordenador Geral de Comunicação e de Projetos no Centro de Investigación de Asuntos Estratégicos Globales (CEINASEG). 
 
 Tem experiência na área de História, com ênfase em Relações Internacionais, atuando principalmente nos seguintes temas: Venezuela, democracia, política externa, representações, história política.
