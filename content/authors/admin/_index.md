@@ -26,7 +26,7 @@ role: Pesquisador
 social:
 - icon: envelope
   icon_pack: fas
-  link: "denis-kenaz@hotmail.com"
+  link: denis-kenaz@hotmail.com
 - display:
     header: false
   icon: twitter
