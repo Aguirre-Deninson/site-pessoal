@@ -8,7 +8,7 @@ education:
   - course: Relações Internacionais
     institution: Pontifícia Universidade Católica de Goiás (PUC Goiás)
     year: 2010
-email: "denis-kenaz@hotmail.com"
+email: denis-kenaz@hotmail.com
 first_name: Deninson
 highlight_name: true
 interests:
