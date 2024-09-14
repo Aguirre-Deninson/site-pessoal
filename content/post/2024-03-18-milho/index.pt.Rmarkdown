@@ -1,0 +1,162 @@
+---
+title: Milho
+author: ''
+date: '2024-03-18'
+slug: milho
+categories: []
+tags: [rstudio]
+subtitle: ''
+summary: 'Aqui farei uma introdução sobre a postagem do milho'
+authors: [admin]
+lastmod: '2024-03-18T18:24:35-03:00'
+featured: no
+image:
+  caption: 'Image credit: [**Deninson Aguirre**]'
+  focal_point: ''
+  preview_only: no
+projects: [rstudio]
+---
+
+# Introdução
+
+Nesta postagem irei repetir algo semelhante ao que foi feito no *post* sobre o [açaí](https://soyaguirre.netlify.app/post/para/). O objetivo em sí será o de reforçar a utilização de mapa, mas desta vez focando no pacote ***leaflet***, bem como a customização do mapa elaborado, e, também, a utilização do gráfico em linha, que terá como base o ***ggplot***.
+
+```{r codigos, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(geobr)
+library(scales)
+library(tidyverse)
+library(sf)
+library(leaflet)
+library(ggthemes)
+options(scipen = 999)
+```
+
+## Produção de milho em Goiás
+
+Normalmente, ao realizarmos uma pesquisa sobre determinado tema, partimos do **"maior para o menor"**, ou seja, o método dedutivo. Porém, neste caso, irei apenas me concentar na apresentação do gráfico, quais pacotes são necessários para a sua elaboração.
+
+Os dados de produção de milhos foram colhido do site do IBGE; mais específicamente, da Produção Agrícola Municipal (PAM), tendo como ano de referência 2022.
+
+Abaixo irei apresentar o mapa com uma de suas cores padões.
+
+```{r goias, message=FALSE, warning=FALSE, include=FALSE}
+Goias.Municipios <- read_municipality(code_muni = "all",year=2019) %>% 
+  filter(code_state == 52) %>% 
+  select(-c("code_state","abbrev_state","code_region","name_region","name_state"))
+
+
+```
+
+```{r message=FALSE, warning=FALSE}
+goias_milho_dados<- read_xlsx("data/go_milho.xlsx")
+
+Goias <- Goias.Municipios %>%
+  full_join(goias_milho_dados,by = "code_muni")
+
+```
+
+Mapa 1
+
+```{r, mapa 1}
+mapa1 <- leaflet(data = Goias) %>%
+  addTiles('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+           attribution = paste(
+             '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+             '&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+           )
+  )
+
+greens = colorNumeric("Greens", domain = Goias$Toneladas)
+mapa1 %>% 
+  addPolygons(weight = 0.3,
+              color = "gray",
+              fillColor = ~greens(Toneladas),
+              fillOpacity = 0.9,
+              opacity = 0.8,
+              highlightOptions = highlightOptions(color = "black",
+                                                  weight = 2,
+                                                  bringToFront = TRUE),
+              smoothFactor = 0.5,
+              popup = paste0(sep = " ", "<strong>Município: </strong>", 
+                             Goias$Municipios, 
+                             "<br><strong>Toneladas: </strong>", 
+                             Goias$Toneladas),
+              label = ~ Municipios) %>%
+  addLegend(position = "bottomright", 
+            pal = greens,
+            values = ~Toneladas,
+            title = "Toneladas") 
+```
+
+Como apresentado no Mapa 1, o prórpio pacote categorizou os dados dividindo nas proporções
+
+Mapa 2
+
+```{r leaflet, message=FALSE, warning=FALSE}
+# leaflet
+
+mapa2 <- leaflet(data = Goias) %>%
+  addTiles('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+           attribution = paste(
+             '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
+             '&copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+           )
+  )
+
+
+bins <- c(0, 100, 200, 500, 1000, 2000, 5000, 10000, 100000, 200000, 500000, 
+          1000000,1500000, 2000000, Inf)
+pal <- colorBin(palette = "YlOrRd", domain = Goias$Toneladas, bins = bins)
+
+mapa2 %>% 
+  addPolygons(weight = 0.3,
+              color = "gray",
+              fillColor = ~pal(Toneladas),
+              fillOpacity = 0.9,
+              opacity = 0.8,
+              highlightOptions = highlightOptions(color = "black",
+                                                  weight = 2,
+                                                  bringToFront = TRUE),
+              smoothFactor = 0.5,
+              popup = paste0(sep = " ", "<strong>Municipio: </strong>", 
+                             Goias$Municipios, 
+                             "<br><strong>Toneladas: </strong>", 
+                             Goias$Toneladas),
+              label = ~ Municipios) %>%
+  addLegend(position = "bottomright", 
+            pal = pal,
+            values = ~Toneladas,
+            title = "Toneladas") 
+```
+
+## Histórico do preço do milho
+
+```{r codigos2, message=FALSE, warning=FALSE}
+serie <- read_xlsx("data/Pasta 1.xlsx")
+serie$Data <- as.Date(serie$Data)
+```
+
+O Indicador do Milho Esalq/BM&FBOVESPA abrage os anos de 2004 a 2024.Como apresentado no gráfico, no primeiro trimestre de 2022 a saca chegou a custar R\$103,90.Já no primeiro trimestre de 2024 a maior alta foi de R\$71,32, Encerrando na casa dos R\$67,72
+
+```{r historico, message=FALSE, warning=FALSE}
+serie %>% 
+  ggplot(aes(x = Data)) + 
+  geom_line(aes(y = Real, color = "Real")) +
+  geom_line(aes(y = Dolar, color = "Dolar")) +
+  ylim(0,120) +
+  annotate(geom="text", x=as.Date("2022-03-14"), y=103.90, 
+           label=" R$103,90\n14/03/2022\n\n") +
+  annotate(geom="text", x=as.Date("2024-01-04"), y=71.32, 
+           label=" R$71,22\n04/01/2024\n\n") +
+  annotate(geom="point", x=as.Date("2022-03-14"), y=103.90, size=2, shape=21, fill="red") +
+  annotate(geom="point", x=as.Date("2024-01-04"), y=71.32, size=2, shape=21, fill="red") +
+  ggthemes::theme_fivethirtyeight() + 
+  labs(
+    title = "Série histórica da cotação do milho",
+    subtitle = "",
+    caption = "Gráfico elaborado por AGUIRRE, Deninson a partir dos Datos obtidos atraves do Centro de Estudos Avançados em Economia Aplicada (CEPEA), (2024).",
+    color= "Cotação"
+  )+theme_economist() +
+  scale_colour_economist()
+```

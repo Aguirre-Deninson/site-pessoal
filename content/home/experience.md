@@ -30,13 +30,18 @@ experience:
     date_start: '2023-06-29'
     date_end: ''
   
-  - title: Diretor de Projeto e Pesquisa
-    company: Centro de Pesquisa Internacional (CPINTER)
-    company_url: 'http://www.cpinter.com.br/'
-    company_logo: logo-cpinter 
+  - title: Servidor Público
+    company: Vapt Vupt
+    company_url: 'https://vaptvupt.go.gov.br/'
+    company_logo: logo-vapt-vupt 
     location: Brasil
-    date_start: '2021-01-01'
+    date_start: '2023-03-09'
     date_end: ''
+    description: |2-
+        
+        * Atendente
+        * Supervisor Substituto
+        * Apoio Administrativo Substituto
         
   - title: Coordenador de Projetos
     company: Centro de Investigación de Asuntos Estratégicos Globales de Venezuela (CEINASEG)
@@ -52,7 +57,7 @@ experience:
     company_logo: logo-feneri
     location: Brasil
     date_start: '2019-06-01'
-    date_end: ''
+    date_end: '2021-06-01'
     
   - title: Editor Assistente
     company: Revista FENERI
