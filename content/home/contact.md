@@ -41,10 +41,6 @@ content:
   office_hours:
   appointment_url: ''
   contact_links:
-    - icon: twitter
-      icon_pack: fab
-      name: DM Me
-      link: 'https://twitter.com/AguirreDeninson'
     - icon: linkedin
       icon_pack: fab
       name: DM Me

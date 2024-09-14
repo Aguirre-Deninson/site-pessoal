@@ -29,10 +29,10 @@ social:
   link: "mailto:denis-kenaz@hotmail.com"
 - display:
     header: false
-  icon: twitter
+  icon: square-instagram
   icon_pack: fab
   label: Follow me on Twitter
-  link: https://twitter.com/AguirreDeninson
+  link: https://www.instagram.com/deninson_aguirre/
 - icon: github
   icon_pack: fab
   link: https://github.com/Aguirre-Deninson
