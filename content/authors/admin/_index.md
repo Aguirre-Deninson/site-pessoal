@@ -38,7 +38,7 @@ social:
   link: https://github.com/Aguirre-Deninson
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/in/deninson-aguirre-08437b1b2/
+  link: https://www.linkedin.com/in/deninson-a-08437b1b2/
 - icon: orcid
   icon_pack: fab
   link: https://orcid.org/0000-0001-5771-1725
