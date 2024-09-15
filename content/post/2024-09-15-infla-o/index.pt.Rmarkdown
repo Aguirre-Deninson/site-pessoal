@@ -24,7 +24,7 @@ projects: [rstudio]
 
 No post de hoje iremos fazer um gráfico em linha contendo os dados da inflação acumulado no Brasil no perído de janeiro a agosto de 2024. O gráfico será criado usando o pacote ggplot2, e utilizaremos os dados do SIDRA para obter tais informações. Acompanhe abaixo o passo a passo.
 
-## **Instalando e carregando pacotes necessários:**
+## **Instalando e carregando pacotes necessários**
 
 Primeiro, você deverá instalar e carregar os pacotes ***sidrar***, ***ggplot2***, e ***ggrepel***. Se ainda não os tiver instalado, execute o seguinte código sem o "\#":
 
@@ -38,7 +38,7 @@ library(ggplot2)
 library(ggrepel)
 ```
 
-## **Obtendo os dados da inflação:**
+## **Obtendo os dados da inflação**
 
 Iremos buscar os dados mensais do IPCA (Índice Nacional de Preços ao Consumidor Amplo) para o ano de 2024 usando a API da SIDRA.
 
@@ -65,7 +65,7 @@ dados <- data.frame( Mes = ipca_2024$`Mês`, Inflacao = ipca_2024$Valor )
 dados$InflacaoAcumulada <- cumsum(dados$Inflacao)
 ```
 
-## **Criando o gráfico de linha:**
+## **Criando o gráfico de linha**
 
 Utilizaremos o ggplot2 para criar o gráfico de linha da inflação acumulada do ano de 2024. Lembrando que é de janeiro até agosto.
 
