@@ -17,7 +17,7 @@ image:
   caption: 'Image credit: [**Freepick**]'
   focal_point: ''
   preview_only: no
-projects: [rstudio]
+projects: [Rstudio]
 ---
 
 # **Introdução**

@@ -8155,13 +8155,13 @@ a.summary-link {
   top: 0; }
 
 .dropdown-menu {
-  background-color: #425ab3 !important;
+  background-color: #fff !important;
   color: #415a77 !important;
   z-index: 1032; }
 
 .navbar {
   height: 70px;
-  background: #425ab3;
+  background: #fff;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.11);
   font-size: 16.17px;
   padding: 0 1rem; }
@@ -8283,7 +8283,7 @@ a.summary-link {
     left: 0;
     top: 50px;
     width: 100%;
-    background-color: #425ab3;
+    background-color: #fff;
     text-align: center !important; }
   .dark .navbar-collapse {
     background-color: #282a36; }
@@ -8313,7 +8313,7 @@ ul.nav-icons li.nav-item a.nav-link {
   color: white !important; }
 
 .dropdown-item {
-  background-color: #425ab3 !important;
+  background-color: #fff !important;
   color: #415a77 !important; }
 
 .dark .dropdown-item {
