@@ -15,7 +15,7 @@ image:
   caption: 'Image credit: [**Deninson Aguirre**]'
   focal_point: ''
   preview_only: no
-projects: [Rstudio]
+projects: [rstudio]
 ---
 
 <link href="{{< blogdown/postref >}}index.pt_files/htmltools-fill/fill.css" rel="stylesheet" />
