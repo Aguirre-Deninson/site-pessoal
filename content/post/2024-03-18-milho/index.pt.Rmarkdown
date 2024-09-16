@@ -9,7 +9,7 @@ tags:
   - Goiás 
   - Brasil
   - Agricultura
-subtitle: '2022'
+subtitle: 'no ano de 2022'
 summary: 'Nesta postagem irei repetir algo semelhante ao que foi feito no post sobre o açaí. O objetivo em sí será o de reforçar a utilização de mapa, mas desta vez focando no pacote leaflet'
 authors: [admin]
 lastmod: '2024-03-18T18:24:35-03:00'
@@ -169,6 +169,4 @@ serie %>%
 
 De forma simples conseguimos elaborar um mapa interativo utilizando o pacote leaflet. Caso queira, você poderá utilizar outros dados e aplicar no código acima.
 
-Espero que este mini tutorial tenha lhe contribuído de alguma maneira.
-
-Para dicas e sugestões, basta entrar em contato!
+Espero que este mini tutorial tenha lhe contribuído de alguma maneira, e para dicas e sugestões, basta entrar em contato!
