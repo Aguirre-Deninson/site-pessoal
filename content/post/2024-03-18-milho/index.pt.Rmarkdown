@@ -1,12 +1,16 @@
 ---
 title: Produção de Milho em Goiás
-author: ''
+author: admin
 date: '2024-03-18'
 slug: milho
 categories: []
-tags: [rstudio, Goiás, Brasil, Agricultura]
+tags: 
+  - rstudio
+  - Goiás 
+  - Brasil
+  - Agricultura
 subtitle: '2022'
-summary: 'Aqui farei uma introdução sobre a postagem do milho'
+summary: 'Nesta postagem irei repetir algo semelhante ao que foi feito no post sobre o açaí. O objetivo em sí será o de reforçar a utilização de mapa, mas desta vez focando no pacote leaflet'
 authors: [admin]
 lastmod: '2024-03-18T18:24:35-03:00'
 featured: no
