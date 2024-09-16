@@ -1,11 +1,11 @@
 ---
-title: Milho
+title: Produção de Milho em Goiás
 author: ''
 date: '2024-03-18'
 slug: milho
 categories: []
-tags: [rstudio]
-subtitle: ''
+tags: [rstudio, Goiás, Brasil, Agricultura]
+subtitle: '2022'
 summary: 'Aqui farei uma introdução sobre a postagem do milho'
 authors: [admin]
 lastmod: '2024-03-18T18:24:35-03:00'
@@ -56,7 +56,7 @@ Goias <- Goias.Municipios %>%
 
 ```
 
-Mapa 1
+**Mapa 1**
 
 ```{r, mapa 1}
 mapa1 <- leaflet(data = Goias) %>%
@@ -91,7 +91,7 @@ mapa1 %>%
 
 Como apresentado no Mapa 1, o prórpio pacote categorizou os dados dividindo nas proporções
 
-Mapa 2
+**Mapa 2**
 
 ```{r leaflet, message=FALSE, warning=FALSE}
 # leaflet
@@ -160,3 +160,11 @@ serie %>%
   )+theme_economist() +
   scale_colour_economist()
 ```
+
+# **Conclusão**
+
+De forma simples conseguimos elaborar um mapa interativo utilizando o pacote leaflet. Caso queira, você poderá utilizar outros dados e aplicar no código acima.
+
+Espero que este mini tutorial tenha lhe contribuído de alguma maneira.
+
+Para dicas e sugestões, basta entrar em contato!
